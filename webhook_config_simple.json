@@ -1,0 +1,38 @@
+{
+  "type": "webhook",
+  "name": "autoservis-asistentka",
+  "description": "POVINNÝ nástroj pre všetky otázky o autách! Slovenská hlasová asistentka pre autoservis Happy. Poskytuje odborné odpovede na technické otázky, diagnostiku, ceny opráv a rady o údržbe. Musí sa používať pri KAŽDEJ otázke týkajúcej sa automobilov.",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": "never",
+  "api_schema": {
+    "url": "https://web-production-b4ba.up.railway.app/webhook",
+    "method": "POST",
+    "request_body_schema": {
+      "type": "object",
+      "properties": [
+        {
+          "id": "message",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Otázka alebo problém zákazníka týkajúci sa automobilu",
+          "required": true
+        },
+        {
+          "id": "customer_name",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Meno zákazníka (voliteľné)",
+          "required": false
+        }
+      ]
+    },
+    "request_headers": [
+      {
+        "type": "value",
+        "name": "Content-Type",
+        "value": "application/json"
+      }
+    ]
+  },
+  "response_timeout_secs": 20
+}
