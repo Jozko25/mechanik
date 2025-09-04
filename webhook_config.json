@@ -1,0 +1,53 @@
+{
+  "type": "webhook",
+  "name": "autoservis-asistentka",
+  "description": "Slovenská hlasová asistentka pre autoservis. Poskytuje profesionálne rady o opravách áut, diagnostike problémov, náhradných dieloch a údržbe vozidiel. Komunikuje výhradne po slovensky s profesionálnym prístupom.",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": "auto",
+  "assignments": [],
+  "api_schema": {
+    "url": "https://web-production-b4ba.up.railway.app/webhook",
+    "method": "POST",
+    "path_params_schema": [],
+    "query_params_schema": [],
+    "request_body_schema": {
+      "id": "body",
+      "type": "object",
+      "description": "Požiadavka na autoservisnú asistenciu v slovenskom jazyku",
+      "properties": [
+        {
+          "id": "message",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Otázka alebo problém zákazníka týkajúci sa automobilu",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "required": true
+        },
+        {
+          "id": "customer_name",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Meno zákazníka (voliteľné)",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "required": false
+        }
+      ],
+      "required": false,
+      "value_type": "llm_prompt"
+    },
+    "request_headers": [
+      {
+        "type": "value",
+        "name": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "auth_connection": null
+  },
+  "response_timeout_secs": 20,
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  }
+}
