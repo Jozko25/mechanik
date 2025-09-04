@@ -57,7 +57,7 @@ async def chat_with_assistant(request: ChatRequest):
     
     try:
         response = openai.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": CAR_SHOP_CONTEXT},
                 {"role": "user", "content": request.message}
